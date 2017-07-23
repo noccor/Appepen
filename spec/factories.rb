@@ -22,7 +22,7 @@ FactoryGirl.define do
   end
 
   factory :recipie do
-    menu_id 1
+    meal_id 1
     ingredient_id 1
     modify true
     quantity 100

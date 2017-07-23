@@ -3,12 +3,13 @@ require "rails_helper"
 RSpec.describe RecipiesController, :cat => :controller do
   before do
   create(:menu)
+  create(:meal)
   create(:ingredient)
   end
 
   let(:valid_params) do
     {
-      menu_id: 1,
+      meal_id: 1,
       ingredient_id: 1,
       modify: true,
       quantity: 100,
@@ -18,7 +19,7 @@ RSpec.describe RecipiesController, :cat => :controller do
 
   let(:valid_update_params) do
     {
-      menu_id: 1,
+      meal_id: 1,
       ingredient_id: 1,
       modify: true,
       quantity: 100,
@@ -28,7 +29,7 @@ RSpec.describe RecipiesController, :cat => :controller do
 
   let(:invalid_params) do
     {
-      menu_id: nil,
+      meal_id: nil,
       ingredient_id: nil
     }
   end
