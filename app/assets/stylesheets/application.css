@@ -12,4 +12,15 @@
  *
  *= require_tree .
  *= require_self
+ *= requre boostrap/bootstrap-theme.min.css
+ *= require boostrap/bootstrap.min.css
  */
+
+ @font-face {
+    font-family: 'Glyphicons Halflings';
+    src: url('/assets/fonts/glyphicons-halflings-regular.eot');
+    src: url('/assets/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+       url('/assets/fonts/glyphicons-halflings-regular.woff') format('woff'),
+       url('/assets/fonts/glyphicons-halflings-regular.ttf') format('truetype'),
+       url('/assets/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+ }
