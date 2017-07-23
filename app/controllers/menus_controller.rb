@@ -3,21 +3,51 @@ class MenusController < ApplicationController
     @menus = Menu.all
   end
 
+  def show
+    @menu = Menu.find(params[:id])
+  end
+
+  def new
+    @menu = Menu.new
+  end
+
+  def edit
+    @menu = Menu.find(params[:id])
+  end
+
   def create
     @menu = Menu.new(menu_params)
 
-    if @menu.save
-      format.html { redirect_to @menu, notice: 'menu was successfully created.' }
-      format.json { render :show, status: :created, location: @menu }
-    else
-      format.html { render :new }
-      format.json { render json: @menu.errors, status: :unprocessable_entity }
+    respond_to do |format|
+      if @menu.save
+        format.html { redirect_to @menu, notice: 'Menu was successfully created.' }
+        format.json { render :show, status: :created, location: @menu }
+      else
+        format.html { render :new }
+        format.json { render json: @menu.errors, status: :unprocessable_entity }
+      end
     end
   end
 
-  private
+  def update
+    @menu = Menu.find(params[:id])
 
-  def menu_params
-    params.require(:menu).permit(:name, :type, :description)
+    if @menu.update(menu_params)
+      redirect_to @menu
+    else
+      render 'edit'
+    end
   end
+
+  def destroy
+    @menu = Menu.find(params[:id])
+    @menu.destroy
+
+    redirect_to menus_path
+  end
+
+  private
+    def menu_params
+      params.require(:menu).permit(:name, :description, :cat)
+    end
 end
