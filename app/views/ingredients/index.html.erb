@@ -1,0 +1,15 @@
+
+<table>
+  <thead>
+    <td>Title</td>
+    <td>Description</td>
+    <td>Category</td>
+  </thead>
+  <% @ingredients.each do |ingredient| %>
+  <tr>
+    <td><%= ingredients.name %></td>
+    <td><%= ingredients.description %></td>
+    <td><%= ingredients.cat %></td>
+  </tr>
+  <% end %>
+</table>
