@@ -20,4 +20,12 @@ FactoryGirl.define do
     cat "staple"
     flavor "savory"
   end
+
+  factory :recipie do
+    menu_id 1
+    ingredient_id 1
+    modify true
+    quantity 100
+    measure "grams"
+  end
 end
