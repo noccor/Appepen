@@ -12,6 +12,8 @@
  *
  *= require_tree .
  *= require_self
+ *= requre boostrap/bootstrap-theme.min.css
+ *= require boostrap/bootstrap.min.css
  */
 
  @font-face {
