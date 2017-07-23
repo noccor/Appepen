@@ -17,7 +17,6 @@ FactoryGirl.define do
   factory :ingredient do
     name "bread"
     description "bread"
-    allergens ["gluten"].to_a
     cat "staple"
     flavor "savory"
   end
