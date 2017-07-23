@@ -1,6 +1,6 @@
 class Meal < ActiveRecord::Base
   belongs_to :menu
-  has_many :ingredients
+  has_many :recipies
 
   validates :name, presence: true,
                     length: { minimum: 3 }
