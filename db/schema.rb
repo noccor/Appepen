@@ -10,30 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170722143644) do
+ActiveRecord::Schema.define(version: 20170723181106) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.text "allergens", default: "--- []\n"
     t.string "cat"
     t.string "flavor"
+    t.boolean "celery"
+    t.boolean "cereal"
+    t.boolean "crustacean"
+    t.boolean "egg"
+    t.boolean "fish"
+    t.boolean "lupin"
+    t.boolean "milk"
+    t.boolean "mollusc"
+    t.boolean "mustard"
+    t.boolean "nut"
+    t.boolean "peanut"
+    t.boolean "sesame"
+    t.boolean "soya"
+    t.boolean "sulphites"
   end
 
   create_table "meals", force: :cascade do |t|
     t.integer "menu_id"
     t.string "name"
     t.string "description"
-    t.text "ingredients", default: "--- []\n"
     t.boolean "traces_of_nuts"
     t.boolean "traces_of_gluten"
     t.boolean "traces_of_lactose"
+    t.boolean "vegitarian"
+    t.boolean "vegan"
   end
 
   create_table "menus", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.string "cat"
+  end
+
+  create_table "recipies", force: :cascade do |t|
+    t.integer "menu_id"
+    t.integer "ingredient_id"
+    t.integer "quantity"
+    t.string "measure"
   end
 
 end
