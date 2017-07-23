@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20170722143644) do
     t.string "name"
     t.string "description"
     t.text "allergens", default: "--- []\n"
-    t.string "type"
+    t.string "cat"
     t.string "flavor"
   end
 
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20170722143644) do
   create_table "menus", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.string "type"
+    t.string "cat"
   end
 
 end

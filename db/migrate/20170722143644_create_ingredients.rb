@@ -4,7 +4,7 @@ class CreateIngredients < ActiveRecord::Migration[5.1]
       t.string :name
       t.string :description
       t.text :allergens, default: [].to_yaml, array: true
-      t.string :type
+      t.string :cat
       t.string :flavor
     end
   end
