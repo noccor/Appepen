@@ -1,0 +1,67 @@
+<div class="jumbotron">
+  <h1><%= link_to "«", menus_path %> <%= @menu.name %></h1>
+  <i><%= @menu.cat %></i>
+  <div class="btn-group pull-right" role="group" aria-label="Basic example">
+    <%= link_to edit_menu_path(@menu.id), method: :get, class: "btn btn-primary btn-lg" do %>
+    <span class="glyphicon glyphicon-edit"></span>  Modify
+    <% end %>
+    <%= link_to new_menu_category_menu_categories_path(@menu.id), method: :get, class: "btn btn-primary btn-lg" do %>
+    <span class="glyphicon glyphicon-plus"></span>  Add Category
+    <% end %>
+  </div>
+  <br>
+  <%= @menu.description %>
+
+</div>
+
+<% @menu.menu_categories.each do |menu_category| %>
+<div class="panel-group" id="accordion">
+    <div class="panel-group">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="btn-group pull-right" role="group" aria-label="Basic example">
+            <%= link_to new_meal_path(menu_category.id), method: :get, class: "btn btn-success btn-xs" do %>
+              <span class="glyphicon glyphicon-pencil"></span> Add an item</a>
+            <% end %>
+            <%= link_to edit_menu_category_path(menu_category.id), method: :get, class: "btn btn-primary btn-xs" do %>
+             <span class="glyphicon glyphicon-edit"></span> Modify Group</a>
+           <% end %>
+            <%= link_to menu_category_path(menu_category.id), method: :delete, class: "btn btn-danger btn-xs" do %>
+             <span class="glyphicon glyphicon-trash"></span> Delete Group</a>
+           <% end %>
+          </div>
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= menu_category.id %>">
+              <b><%= menu_category.name %>:</b> <%= menu_category.description %> <span class="badge badge-secondary"> <%= menu_category.meals.count %> </span>
+            </td>
+            </a>
+          </h4>
+        </div>
+        <div id="collapse<%= menu_category.id %>" class="panel-collapse collapse">
+          <div class="panel-body">
+            <table class="table">
+              <thead>
+                <td>Name</td>
+                <td>Description</td>
+                <td>Price</td>
+                <td></td>
+              </thead>
+              <% menu_category.meals.each do |meal| %>
+              <tr>
+                <td><%= meal.name %></td>
+                <td><%= meal.description %></td>
+                <td><%= meal.price %></td>
+                <td>
+                  <%= link_to meal_path(meal.id), method: :get, class: "btn btn-success btn-xs pull-right" do %>
+                    <span class="glyphicon glyphicon-edit"></span> Manage
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

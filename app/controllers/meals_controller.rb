@@ -20,7 +20,7 @@ class MealsController < ApplicationController
 
     respond_to do |format|
       if @meal.save
-        format.html { redirect_to @meal, notice: 'Meal was successfully created.' }
+        format.html { redirect_to menu_path(MenuCategory.find(@meal.menu_category_id).menu_id), notice: 'Meal was successfully created.' }
         format.json { render :show, status: :created, location: @meal }
       else
         format.html { render :new }
@@ -33,7 +33,7 @@ class MealsController < ApplicationController
     @meal = Meal.find(params[:id])
 
     if @meal.update(meal_params)
-      redirect_to @meal
+      redirect_to meal_path(@meal.id)
     else
       render 'edit'
     end
@@ -41,14 +41,15 @@ class MealsController < ApplicationController
 
   def destroy
     @meal = Meal.find(params[:id])
+    menu_id = @meal.menu_category.menu_id
     @meal.destroy
 
-    redirect_to meals_path
+    redirect_to menu_path(menu_id)
   end
 
   private
 
   def meal_params
-    params.require(:meal).permit(:menu_id, :name, :description, :ingredients, :traces_of_gluten, :traces_of_nuts, :traces_of_lactose)
+    params.require(:meal).permit(:menu_category_id, :price, :name, :description, :ingredients, :traces_of_gluten, :traces_of_nuts, :traces_of_lactose)
   end
 end

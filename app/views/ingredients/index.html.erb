@@ -7,9 +7,22 @@
   </thead>
   <% @ingredients.each do |ingredient| %>
   <tr>
-    <td><%= ingredients.name %></td>
-    <td><%= ingredients.description %></td>
-    <td><%= ingredients.cat %></td>
+    <td><%= ingredient.id %></td>
+    <td><%= ingredient.name %></td>
+    <td><%= ingredient.description %></td>
+    <td><%= ingredient.cat %></td>
+    <td><%= ingredient.flavor %></td>
+    <td><%= ingredient.celery %></td>
+    <td><%= ingredient.crustacean %></td>
+    <td><%= ingredient.egg %></td>
+    <td><%= ingredient.fish %></td>
+    <td><%= ingredient.lupin %></td>
+    <td><%= ingredient.milk %></td>
+    <td><%= ingredient.nut %></td>
+    <td><%= ingredient.peanut %></td>
+    <td><%= ingredient.sesame %></td>
+    <td><%= ingredient.soya %></td>
+    <td><%= ingredient.sulphites %></td>
   </tr>
   <% end %>
 </table>

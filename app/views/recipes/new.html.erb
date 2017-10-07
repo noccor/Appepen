@@ -1,0 +1,18 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    New
+  </div>
+  <div class="panel-body">
+    <%= form_for @recipe do |f| %>
+      <%= f.label :name %>:
+      <%= f.text_field :name, class: "form-control"%><br />
+
+      <%= f.label :description %>:
+      <%= f.text_field :description, class: "form-control" %><br />
+
+      <%= f.hidden_field :meal_id, :value => params[:meal_id] %>
+
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>

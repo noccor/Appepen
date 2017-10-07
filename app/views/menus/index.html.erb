@@ -1,13 +1,20 @@
-
-<table>
-  <thead>
-    <td>Title</td>
-    <td>Description</td>
-  </thead>
-  <% @menus.each do |menu| %>
-  <tr>
-    <td><%= menu.name %></td>
-    <td><%= menu.description %></td>
-  </tr>
-  <% end %>
-</table>
+<div class="panel panel-default">
+  <div class="panel-body">
+     <table class="table">
+      <thead>
+        <td>Title</td>
+        <td>Description</td>
+        <td>Meals</td>
+        <td></td>
+      </thead>
+      <% @menus.each do |menu| %>
+      <tr>
+        <td><%= menu.name %></td>
+        <td><%= menu.description %></td>
+        <td><%= menu.menu_categories.count %></td>
+        <td><a href="/menus/<%= menu.id %>">view</a></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    New <%= MenuCategory.find(params[:menu_category_id]).name.singularize %> for <%= MenuCategory.find(params[:menu_category_id]).menu.name %>
+  </div>
+<div class="panel-body">
+  <%= form_for @meal do |f| %>
+    <%= f.label :name %>:
+    <%= f.text_field :name, class: "form-control" %><br />
+
+    <%= f.label :description %>:
+    <%= f.text_field :description, class: "form-control" %><br />
+
+    <%= f.label :price %>:
+    <%= f.number_field :price, class: "form-control", step: :any%><br />
+
+    <%= f.hidden_field :menu_category_id, class: "form-control", value: params[:menu_category_id] %>
+
+    <%= f.submit %>
+  <% end %>
+</div>

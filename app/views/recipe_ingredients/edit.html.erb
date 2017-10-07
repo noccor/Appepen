@@ -1,0 +1,13 @@
+<table>
+  <thead>
+    <td>Title</td>
+    <td>Description</td>
+    <td>Category</td>
+  </thead>
+  <% @recipies.each do |recipie| %>
+  <tr>
+    <td><%= recipie.ingredient.name %></td>
+    <td><%= recipie.meal.name %></td>
+  </tr>
+  <% end %>
+</table>

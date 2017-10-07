@@ -2,8 +2,8 @@
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ * Any CSS and SCSS file within this directory, lib./stylesheets, or any plugin's
+ * vendor./stylesheets directory can be referenced here using a relative path.
  *
  * You're free to add application-wide styles to this file and they'll appear at the bottom of the
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
@@ -12,15 +12,15 @@
  *
  *= require_tree .
  *= require_self
- *= requre boostrap/bootstrap-theme.min.css
+ *= requre boostrap/bootstrap-flat.min.css
  *= require boostrap/bootstrap.min.css
  */
 
  @font-face {
-    font-family: 'Glyphicons Halflings';
-    src: url('/assets/fonts/glyphicons-halflings-regular.eot');
-    src: url('/assets/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
-       url('/assets/fonts/glyphicons-halflings-regular.woff') format('woff'),
-       url('/assets/fonts/glyphicons-halflings-regular.ttf') format('truetype'),
-       url('/assets/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+   font-family: 'Glyphicons Halflings';
+   src: url('../assets/glyphicons-halflings-regular.eot');
+   src: url('../assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+   url('../assets/glyphicons-halflings-regular.woff') format('woff'),
+   url('../assets/glyphicons-halflings-regular.ttf') format('truetype'),
+   url('../assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
  }

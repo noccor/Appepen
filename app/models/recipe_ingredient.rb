@@ -1,6 +1,7 @@
-class Recipie < ActiveRecord::Base
+class RecipeIngredient < ActiveRecord::Base
   belongs_to :meal
-  belongs_to :ingredient
+  belongs_to :ingredients
+  belongs_to :recipies
 
   validates :meal_id, presence: true
 

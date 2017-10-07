@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170723185959) do
+ActiveRecord::Schema.define(version: 20170927191000) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
@@ -42,6 +42,14 @@ ActiveRecord::Schema.define(version: 20170723185959) do
     t.boolean "traces_of_lactose"
     t.boolean "vegitarian"
     t.boolean "vegan"
+    t.integer "menu_category_id"
+    t.decimal "price", precision: 8, scale: 2
+  end
+
+  create_table "menu_categories", force: :cascade do |t|
+    t.text "name"
+    t.text "description"
+    t.integer "menu_id"
   end
 
   create_table "menus", force: :cascade do |t|
@@ -50,11 +58,18 @@ ActiveRecord::Schema.define(version: 20170723185959) do
     t.string "cat"
   end
 
-  create_table "recipies", force: :cascade do |t|
+  create_table "recipe_ingredients", force: :cascade do |t|
     t.integer "ingredient_id"
     t.integer "quantity"
     t.string "measure"
     t.boolean "modify"
+    t.integer "recipe_id"
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.text "name"
+    t.text "description"
+    t.integer "organization_id"
     t.integer "meal_id"
   end
 

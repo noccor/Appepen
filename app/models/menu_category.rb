@@ -1,10 +1,8 @@
-class Meal < ActiveRecord::Base
-  belongs_to :menu_category
-  has_many :recipes
+class MenuCategory < ActiveRecord::Base
+  belongs_to :menu
+  has_many :meals
 
-  validates :menu_category_id, presence: true
-
-  validates :price, presence: true
+  validates :menu_id, presence: true
 
   validates :name, presence: true,
                     length: { minimum: 3 }

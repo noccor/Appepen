@@ -1,46 +1,38 @@
 <div class="jumbotron">
-  <h1><%= link_to "«", menu_path(@meal.menu_category.menu_id) %> <%= @meal.name %></h1>
-  <i>A <%= @meal.menu_category.name.singularize %> from <%= @meal.menu_category.menu.name %></i>
-  <br>
-  <br>
-  <%= @meal.description %>
-  <br>
-  <br>
-  <%= @meal.price %>
+  <h1><%= link_to "«", meal_path(@recipe.meal_id) %> <%= @recipe.name %></h1>
+  <i>The recipe for <%= @recipe.meal.name %></i>
   <div class="btn-group pull-right" role="group" aria-label="Basic example">
-    <%= link_to edit_meal_path(@meal.id), method: :get, class: "btn btn-primary btn-lg" do %>
+    <%= link_to edit_recipe_path(@recipe.id), method: :get, class: "btn btn-primary btn-lg" do %>
       <span class="glyphicon glyphicon-edit"></span>  Modify
     <% end %>
-    <%= link_to meal_path(@meal.id), method: :delete, class: "btn btn-danger btn-lg" do %>
+    <%= link_to recipe_path(@recipe.id), method: :delete, class: "btn btn-danger btn-lg" do %>
      <span class="glyphicon glyphicon-trash"></span> Delete Meal</a>
    <% end %>
-   <% if @meal.recipes.count == 0 %>
+   <% if @recipe.recipe_ingredients.count == 0 %>
      <div class="btn-group pull-right" role="group" width="100%" aria-label="Basic example">
-       <%= link_to new_recipe_recipes_path(@meal.id), method: :get, class: "btn btn-success btn-lg" do %>
-         <span class="glyphicon glyphicon-pencil"></span> Create New Recipie</a>
-       <% end %>
-       <%= link_to new_recipe_recipes_path(1), method: :get, class: "btn btn-success btn-lg" do %>
-         <span class="glyphicon glyphicon-plus"></span> Add From Recipie Book</a>
+       <%= link_to new_recipe_ingredient_path(@recipe.id), method: :get, class: "btn btn-success btn-lg" do %>
+         <span class="glyphicon glyphicon-pencil"></span> Add Ingredient</a>
        <% end %>
      </div>
    <% end %>
   </div>
+  <%= @recipe.description %>
 </div>
 
-<% if @meal.recipes.count != 0 %>
-  <% @meal.recipes.each do |recipe| %>
+<% if @recipe.recipe_ingredients.count != 0 %>
+  <% @recipe.recipe_ingredients.each do |ingredient| %>
     <div class="panel-group" id="accordion">
         <div class="panel-group">
           <div class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-                  <b><%= recipe.name %></b></span>
-                  <div class="btn-group pull-right" role="group" aria-label="Basic example">
-                    <%= link_to recipe_path(recipe.id), method: :get, class: "btn btn-success btn-xs" do %>
+                  <b>Ingredients</b></span>
+                  <div class="btn-group pull-right" role="group" width="100%" aria-label="Basic example">
+                    <%= link_to recipe_path(ingredient.id), method: :get, class: "btn btn-success btn-xs" do %>
                       <span class="glyphicon glyphicon-edit"></span> Manage
                     <% end %>
-                    <%= link_to recipe_path(recipe.id), method: :delete, class: "btn btn-danger btn-xs" do %>
+                    <%= link_to recipe_path(ingredient.id), method: :delete, class: "btn btn-danger btn-xs" do %>
                       <span class="glyphicon glyphicon-edit"></span> Delete
                     <% end %>
                   </div>
