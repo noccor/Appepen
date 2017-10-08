@@ -13,6 +13,6 @@
 //= require jquery-3.2.1
 //= require rails
 //= require turbolinks
-//= require_tree .
 //= require bootstrap/bootstrap.min
-//= require ingredients
+//= require select2/select2.full.min
+//= require recipe_ingredients

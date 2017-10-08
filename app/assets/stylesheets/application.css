@@ -14,6 +14,7 @@
  *= require_self
  *= requre boostrap/bootstrap-flat.min.css
  *= require boostrap/bootstrap.min.css
+ *= require select2/select2.min.css
  */
 
  @font-face {
