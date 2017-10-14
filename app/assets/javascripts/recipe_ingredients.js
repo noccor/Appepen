@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
   $("#ingredient_id").select2({
-      tokenSeparators: [',', ' '],
+      tags: true,
       minimumInputLength: 2,
       placeholder: "Start typing your ingredient",
       ajax: {
@@ -24,7 +24,7 @@ $(document).ready(function() {
                       }
                   })
               };
-          }
+          },
       }
   });
 });
