@@ -1,11 +1,9 @@
 class IngredientsController < ApplicationController
   def index
-    @ingredients = Ingredient.all
+    term = params[:term] || nil
+    ingredients = Ingredient.where('name LIKE ?', "%#{term}%") if term
 
-    respond_to do |format|
-      format.html
-      format.json { render json: @ingredients }
-    end
+    render json: ingredients
   end
 
   def show
