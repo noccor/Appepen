@@ -8,7 +8,7 @@ class RecipeIngredientsController < ApplicationController
   end
 
   def new
-    @recipe_ingredient = Recipe.new
+    @recipe_ingredient = RecipeIngredient.new
   end
 
   def edit
@@ -16,7 +16,7 @@ class RecipeIngredientsController < ApplicationController
   end
 
   def create
-    @recipe_ingredient = Recipe.new(recipe_ingredient_params)
+    @recipe_ingredient = RecipeIngredient.new(recipe_ingredient_params)
 
     respond_to do |format|
       if @recipe_ingredient.save

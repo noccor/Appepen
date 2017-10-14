@@ -1,7 +1,95 @@
-<%= form_for @recipe_ingredient do |f| %>
-  <%= f.label :name%>
-  <select id="banana"></select><br />
-
-
-  <%= f.submit %>
-<% end %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    New
+  </div>
+  <div class="panel-body">
+    <%= form_for @recipe_ingredient do |f| %>
+        <table style="width: 100%">
+          <thead>
+            <th>Ingredient</th>
+            <th>Amount</th>
+            <th>Measure</th>
+            <th>Allergens</th>
+            <th>Optional</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <select id="banana" style="width: 100%"></select><br />
+              </td>
+              <td>
+                <%= f.number_field :quantity %>
+              </td>
+              <td>
+                <select id="measure">
+                  <option value="g">grams</option>
+                  <option value="mg">miligrams</option>
+                  <option value="l">litres</option>
+                  <option value="ml">mililitres</option>
+                </select>
+              </td>
+              <td>
+                <div class="dropdown">
+                  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-grain"></span>
+                  <span class="caret"></span></button>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <input type="checkbox" name="optional" class="custom-control-input">Celery
+                    </li>
+                    <li>
+                      <input type="checkbox" name="optional" class="custom-control-input">Cereal
+                    </li>
+                    <li>
+                      <input type="checkbox" name="optional" class="custom-control-input">Crustacean
+                    </li>
+                    <li>
+                      <input type="checkbox" name="optional" class="custom-control-input">Egg
+                    </li>
+                    <li>
+                      <input type="checkbox" name="optional" class="custom-control-input">Fish
+                    </li>
+                    <li>
+                      <input type="checkbox" name="optional" class="custom-control-input">Lupin
+                    </li>
+                    <li>
+                      <input type="checkbox" name="optional" class="custom-control-input">Milk
+                    </li>
+                    <li>
+                      <input type="checkbox" name="optional" class="custom-control-input">Mollusc
+                    </li>
+                    <li>
+                      <input type="checkbox" name="optional" class="custom-control-input">Mustard
+                    </li>
+                    <li>
+                      <input type="checkbox" name="optional" class="custom-control-input">Nut
+                    </li>
+                    <li>
+                      <input type="checkbox" name="optional" class="custom-control-input">Peanut
+                    </li>
+                    <li>
+                      <input type="checkbox" name="optional" class="custom-control-input">Sesame
+                    </li>
+                    <li>
+                      <input type="checkbox" name="optional" class="custom-control-input">Soya
+                    </li>
+                    <li>
+                      <input type="checkbox" name="optional" class="custom-control-input">Sulphites
+                    </li>
+                  </ul>
+                </div>
+              </td>
+              <td>
+                <label class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input">
+                  <span class="custom-control-indicator"></span>
+                  <span class="custom-control-description"></span>
+                </label>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>
