@@ -56,46 +56,46 @@
                   <span class="caret"></span></button>
                   <ul class="dropdown-menu">
                     <li>
-                      <input type="checkbox" name="optional" class="custom-control-input">Celery
+                      <input type="checkbox" name="recipe_ingredient[celery]" class="custom-control-input">Celery
                     </li>
                     <li>
-                      <input type="checkbox" name="optional" class="custom-control-input">Cereal
+                      <input type="checkbox" name="recipe_ingredient[cereal]" class="custom-control-input">Cereal
                     </li>
                     <li>
-                      <input type="checkbox" name="optional" class="custom-control-input">Crustacean
+                      <input type="checkbox" name="recipe_ingredient[crustacean]" class="custom-control-input">Crustacean
                     </li>
                     <li>
-                      <input type="checkbox" name="optional" class="custom-control-input">Egg
+                      <input type="checkbox" name="recipe_ingredient[egg]" class="custom-control-input">Egg
                     </li>
                     <li>
-                      <input type="checkbox" name="optional" class="custom-control-input">Fish
+                      <input type="checkbox" name="recipe_ingredient[fish]" class="custom-control-input">Fish
                     </li>
                     <li>
-                      <input type="checkbox" name="optional" class="custom-control-input">Lupin
+                      <input type="checkbox" name="recipe_ingredient[lupin]" class="custom-control-input">Lupin
                     </li>
                     <li>
-                      <input type="checkbox" name="optional" class="custom-control-input">Milk
+                      <input type="checkbox" name="recipe_ingredient[milk]" class="custom-control-input">Milk
                     </li>
                     <li>
-                      <input type="checkbox" name="optional" class="custom-control-input">Mollusc
+                      <input type="checkbox" name="recipe_ingredient[mollusc]" class="custom-control-input">Mollusc
                     </li>
                     <li>
-                      <input type="checkbox" name="optional" class="custom-control-input">Mustard
+                      <input type="checkbox" name="recipe_ingredient[mustard]" class="custom-control-input">Mustard
                     </li>
                     <li>
-                      <input type="checkbox" name="optional" class="custom-control-input">Nut
+                      <input type="checkbox" name="recipe_ingredient[nut]" class="custom-control-input">Nut
                     </li>
                     <li>
-                      <input type="checkbox" name="optional" class="custom-control-input">Peanut
+                      <input type="checkbox" name="recipe_ingredient[peanut]" class="custom-control-input">Peanut
                     </li>
                     <li>
-                      <input type="checkbox" name="optional" class="custom-control-input">Sesame
+                      <input type="checkbox" name="recipe_ingredient[sesame]" class="custom-control-input">Sesame
                     </li>
                     <li>
-                      <input type="checkbox" name="optional" class="custom-control-input">Soya
+                      <input type="checkbox" name="recipe_ingredient[soya]" class="custom-control-input">Soya
                     </li>
                     <li>
-                      <input type="checkbox" name="optional" class="custom-control-input">Sulphites
+                      <input type="checkbox" name="recipe_ingredient[sulphites]" class="custom-control-input">Sulphites
                     </li>
                   </ul>
                 </div>
@@ -117,7 +117,6 @@
 </div>
 
 <% if @recipe.recipe_ingredients.count != 0 %>
-  <% @recipe.recipe_ingredients.each do |ingredient| %>
     <div class="panel-group" id="accordion">
         <div class="panel-group">
           <div class="panel panel-default">
@@ -125,14 +124,6 @@
               <h4 class="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
                   <b>Ingredients</b></span>
-                  <div class="btn-group pull-right" role="group" width="100%" aria-label="Basic example">
-                    <%= link_to recipe_path(ingredient.id), method: :get, class: "btn btn-success btn-xs" do %>
-                      <span class="glyphicon glyphicon-edit"></span> Manage
-                    <% end %>
-                    <%= link_to recipe_path(ingredient.id), method: :delete, class: "btn btn-danger btn-xs" do %>
-                      <span class="glyphicon glyphicon-edit"></span> Delete
-                    <% end %>
-                  </div>
                 </td>
                 </a>
               </h4>
@@ -145,16 +136,17 @@
                     <td>Description</td>
                     <td></td>
                   </thead>
-                  <tr>
-                    <td>xox</td>
-                    <td>xox</td>
-                    <td>
-                    </td>
-                  </tr>
+                  <% @recipe.recipe_ingredients.each do |ingredient| %>
+                    <tr>
+                      <td><%= ingredient.ingredient.name %></td>
+                      <td><%= ingredient.ingredient.description %></td>
+                      <td>
+                      </td>
+                    </tr>
+                  <% end %>
                 </div>
               </div>
             </div>
           </div>
         </div>
-    <% end %>
 <% end %>

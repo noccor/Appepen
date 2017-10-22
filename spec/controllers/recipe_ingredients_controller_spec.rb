@@ -11,6 +11,17 @@ RSpec.describe RecipeIngredientsController, :cat => :controller do
     }
   end
 
+  let(:new_ingredient_params) do
+    {
+      ingredient_id: "Peanuts",
+      recipe_id: 1,
+      modify: true,
+      quantity: 1,
+      measure: 100,
+      peanut: true
+    }
+  end
+
   let(:valid_update_params) do
     {
       quantity: 100,
@@ -20,8 +31,8 @@ RSpec.describe RecipeIngredientsController, :cat => :controller do
 
   let(:invalid_params) do
     {
-      ingredient_id: "banana",
-      recipe_id: 1,
+      ingredient_id: 1,
+      recipe_id: 100,
       modify: true,
       quantity: 1,
       measure: 100
@@ -136,11 +147,20 @@ RSpec.describe RecipeIngredientsController, :cat => :controller do
       context "we don't pass the id of an existing ingredient" do
         it "creates a new RecipeIngredient and a new ingredient", :aggregate_failures do
           expect{
-            post :create, params: { :recipe_ingredient => valid_params }
+            post :create, params: { :recipe_ingredient => new_ingredient_params }
           }.to change{RecipeIngredient.count}.by(1)
-          expect(RecipeIngredient.last.ingredient_id).to eq(1)
+          expect(RecipeIngredient.last.ingredient_id).to eq(2)
           expect(RecipeIngredient.last.recipe_id).to eq(1)
         end
+
+        it "creates a new ingredient", :aggregate_failures do
+          expect{
+            post :create, params: { :recipe_ingredient => new_ingredient_params }
+          }.to change{Ingredient.count}.by(1)
+          expect(Ingredient.last.name).to eq("Peanuts")
+          expect(Ingredient.last.peanut).to be(true)
+        end
+
 
         it "redirects to the correct page", :aggregate_failures do
           post :create, params: { :recipe_ingredient => valid_params }
@@ -150,15 +170,12 @@ RSpec.describe RecipeIngredientsController, :cat => :controller do
       end
 
       it "doesn't create a new RecipeIngredient with invalid params", :aggregate_failures do
+        count = RecipeIngredient.count
         expect{
           post :create, params: { :recipe_ingredient => invalid_params }
-        }.to change{RecipeIngredient.count}.by(0)
-      end
-
-      it "redirects to the correct page", :aggregate_failures do
-        post :create, params: { :recipe_ingredient => invalid_params }
-        response.code.should == "302"
-        response.should redirect_to("/recipes/1")
+        }.to raise_error(ActiveRecord::RecordNotFound)
+        response.code.should == "200"
+        expect(RecipeIngredient.count).to eq(count)
       end
     end
 

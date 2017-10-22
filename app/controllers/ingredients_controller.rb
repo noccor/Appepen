@@ -52,6 +52,6 @@ class IngredientsController < ApplicationController
   private
 
   def ingredient_params
-    params.require(:ingredient).permit(:menu_id, :name, :description, :ingredients, :traces_of_gluten, :traces_of_nuts, :traces_of_lactose)
+    params.require(:ingredient).permit(:menu_id, :name, :description, :ingredients, :celery, :cereal, :crustacean, :egg, :fish, :lupin, :milk, :mollusc, :mustard, :nut, :peanut, :sesame, :soya, :sulphites)
   end
 end

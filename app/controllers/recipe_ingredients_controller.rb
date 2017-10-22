@@ -1,4 +1,6 @@
 class RecipeIngredientsController < ApplicationController
+
+
   def index
     @recipe_ingredient_ingredients = RecipeIngredient.all
   end
@@ -16,8 +18,19 @@ class RecipeIngredientsController < ApplicationController
   end
 
   def create
-    @recipe_ingredient = RecipeIngredient.new(recipe_ingredient_params)
-    @recipe = Recipe.find(recipe_ingredient_params[:recipe_id])
+
+    params = recipe_ingredient_params
+    if Ingredient.where(id: params[:ingredient_id]).empty?
+      new_ingredient = Ingredient.new(name: params[:ingredient_id], description: 'description', celery: params['celery'], cereal: params['cereal'], crustacean: params['crustacean'], egg: params['egg'],fish: params['fish'],lupin: params['lupin'],milk: params['milk'],mollusc: params['mollusc'],
+      mustard: params['mustard'], nut: params['nut'],peanut: params['peanut'],sesame: params['sesame'],soya: params['soya'],sulphites: params['sulphites'])
+      new_ingredient.save
+      require 'pry'; binding.pry
+
+      params['ingredient_id'] = Ingredient.where(name: params[:ingredient_id]).first.id
+    end
+
+    @recipe_ingredient = RecipeIngredient.new(params.except(:celery, :cereal, :crustacean, :egg, :fish, :lupin, :milk, :mollusc, :mustard, :nut, :peanut, :sesame, :soya, :sulphites))
+    @recipe = Recipe.find(params[:recipe_id])
 
     respond_to do |format|
       if @recipe_ingredient.save
@@ -48,6 +61,6 @@ class RecipeIngredientsController < ApplicationController
   private
 
   def recipe_ingredient_params
-    params.require(:recipe_ingredient).permit(:recipe_id, :ingredient_id, :modify, :quantity, :measure)
+    params.require(:recipe_ingredient).permit(:recipe_id, :ingredient_id, :modify, :quantity, :measure, :celery, :cereal, :crustacean, :egg, :fish, :lupin, :milk, :mollusc, :mustard, :nut, :peanut, :sesame, :soya, :sulphites)
   end
 end
