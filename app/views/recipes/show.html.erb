@@ -36,13 +36,13 @@
           <tbody>
             <tr>
               <td>
-                <select id="ingredient_id" style="width: 100%"></select><br />
+                <select id="ingredient_id" name="recipe_ingredient[ingredient_id]" style="width: 100%"></select><br />
               </td>
               <td>
                 <%= f.number_field :quantity %>
               </td>
               <td>
-                <select id="measure">
+                <select id="measure" name="recipe_ingredient[measure]">
                   <option value="g">grams</option>
                   <option value="mg">miligrams</option>
                   <option value="l">litres</option>
@@ -102,10 +102,11 @@
               </td>
               <td>
                 <label class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input">
+                  <input type="checkbox" name="recipe_ingredient[optional]" class="custom-control-input">
                   <span class="custom-control-indicator"></span>
                   <span class="custom-control-description"></span>
                 </label>
+                <%= f.hidden_field :recipe_id, :value => params[:id] %>
               </td>
             </tr>
           </tbody>
